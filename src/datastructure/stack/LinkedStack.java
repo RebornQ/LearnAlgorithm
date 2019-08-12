@@ -39,14 +39,14 @@ public class LinkedStack<T> implements MyStack<T> {
 
     @Override
     public void push(T data) throws StackException {
-        if (data == null) throw new StackException("Data不能为空！");
+        if (data == null) throw new StackException("坏人！想骗吃骗喝？");
         top = new Node<>(data, top);    // 更新栈顶
     }
 
     @Override
     public T peek() {
         if (isEmpty()) {
-            throw new EmptyStackException("栈是空的！");
+            throw new EmptyStackException();
         }
         T result = top.data;
         return result;
@@ -55,7 +55,7 @@ public class LinkedStack<T> implements MyStack<T> {
     @Override
     public T pop() {
         if (isEmpty()) {
-            throw new EmptyStackException("栈是空的！");
+            throw new EmptyStackException();
         }
         T result = top.data;
         if (!top.isEmpty()) {

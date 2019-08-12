@@ -59,7 +59,7 @@ public class SequenceStack<T> implements MyStack<T> {
     @Override
     public T peek() {
         if (top == -1) {
-            throw new EmptyStackException("栈是空的！");
+            throw new EmptyStackException();
         }
         return array[top];
     }
@@ -67,7 +67,7 @@ public class SequenceStack<T> implements MyStack<T> {
     @Override
     public T pop() {
         if (top == -1) {
-            throw new EmptyStackException("栈是空的！");
+            throw new EmptyStackException();
         }
         size--;
         return array[top--];
