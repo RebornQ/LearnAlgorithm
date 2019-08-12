@@ -7,6 +7,7 @@ public class Client {
         for (int i = 0; i < 10; i++) {
             sequenceStack.push(i);
         }
+        sequenceStack.push(10);
         System.out.println("Size: " + sequenceStack.size());
         System.out.println("Empty? " + sequenceStack.isEmpty());
         System.out.println("Peek->" + sequenceStack.peek());

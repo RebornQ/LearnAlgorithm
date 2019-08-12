@@ -22,15 +22,19 @@ public class SequenceStack<T> implements MyStack<T> {
 
     private int size = 0;
 
+    private Class<T> type;
+
     @SuppressWarnings("unchecked")
     public SequenceStack(Class<T> type) {
 //        array = (T[]) new Object[this.CAPACITY_DEFAULT];
+        this.type = type;
         array = (T[]) Array.newInstance(type, this.CAPACITY_DEFAULT);
     }
 
     @SuppressWarnings("unchecked")
     public SequenceStack(Class<T> type, int capacity) {
 //        array = (T[]) new Object[capacity];
+        this.type = type;
         array = (T[]) Array.newInstance(type, capacity);
     }
 
@@ -41,13 +45,14 @@ public class SequenceStack<T> implements MyStack<T> {
 
     @Override
     public void push(T data) {
-        // 判断是否达到
-        if (top == array.length - 1) {  // 超出栈容量
-            throw new StackOverflowError("爆水管啦！");
-        } else {
-            array[++top] = data;
-            size++;
-        }
+        // 判断是否达到容量限制
+        if (top == array.length - 1)   // 超出栈容量
+//            throw new StackOverflowError("爆水管啦！");
+            // 扩容
+            ensureCapacity(array.length * 2 + 1);
+        // 从栈顶添加元素
+        array[++top] = data;
+        size++;
     }
 
     @Override
@@ -67,8 +72,23 @@ public class SequenceStack<T> implements MyStack<T> {
         return array[top--];
     }
 
+    @SuppressWarnings("unchecked")
+    public void ensureCapacity(int capacity) {
+        // 如果需要扩展的容量比现在数组容量还小，则无需扩容
+        if (capacity < size) return;
+
+        T[] oldArray = array;
+        array = (T[]) Array.newInstance(type, capacity);
+        // 复制元素到扩容后的新数组
+        for (int i = 0; i < size; i++) {
+            array[i] = oldArray[i];
+        }
+        oldArray = null;
+    }
+
     /**
      * 获取栈的大小
+     *
      * @return 栈的大小
      */
     public int size() {
