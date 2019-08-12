@@ -1,5 +1,8 @@
 package datastructure.stack;
 
+import datastructure.stack.exception.EmptyStackException;
+import datastructure.stack.exception.StackException;
+
 public class LinkedStack<T> implements MyStack<T> {
 
     // 定义一个节点类

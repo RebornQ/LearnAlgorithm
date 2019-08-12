@@ -1,7 +1,8 @@
 package datastructure.stack;
 
+import datastructure.stack.exception.EmptyStackException;
+
 import java.lang.reflect.Array;
-import java.util.EmptyStackException;
 
 public class SequenceStack<T> implements MyStack<T> {
 
@@ -58,7 +59,7 @@ public class SequenceStack<T> implements MyStack<T> {
     @Override
     public T peek() {
         if (top == -1) {
-            throw new EmptyStackException();
+            throw new EmptyStackException("栈是空的！");
         }
         return array[top];
     }
@@ -66,7 +67,7 @@ public class SequenceStack<T> implements MyStack<T> {
     @Override
     public T pop() {
         if (top == -1) {
-            throw new EmptyStackException();
+            throw new EmptyStackException("栈是空的！");
         }
         size--;
         return array[top--];

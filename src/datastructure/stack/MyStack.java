@@ -1,5 +1,7 @@
 package datastructure.stack;
 
+import datastructure.stack.exception.StackException;
+
 public interface MyStack<T> {
     // 1.https://blog.csdn.net/javazejian/article/details/53362993
     // 2.https://segmentfault.com/a/1190000002516799

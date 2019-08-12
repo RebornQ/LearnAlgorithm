@@ -1,5 +1,7 @@
 package datastructure.stack;
 
+import datastructure.stack.exception.StackException;
+
 import java.util.Scanner;
 
 public class Client {
