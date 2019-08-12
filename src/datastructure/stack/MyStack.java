@@ -14,7 +14,7 @@ public interface MyStack<T> {
      * 元素入栈
      * @param data 入栈的元素
      */
-    void push(T data);
+    void push(T data) throws StackException;
 
     /**
      * 返回栈顶元素，未出栈
