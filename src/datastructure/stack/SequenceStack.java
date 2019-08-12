@@ -1,5 +1,6 @@
 package datastructure.stack;
 
+import java.lang.reflect.Array;
 import java.util.EmptyStackException;
 
 public class SequenceStack<T> implements MyStack<T> {
@@ -22,13 +23,15 @@ public class SequenceStack<T> implements MyStack<T> {
     private int size = 0;
 
     @SuppressWarnings("unchecked")
-    public SequenceStack() {
-        array = (T[]) new Object[this.CAPACITY_DEFAULT];
+    public SequenceStack(Class<T> type) {
+//        array = (T[]) new Object[this.CAPACITY_DEFAULT];
+        array = (T[]) Array.newInstance(type, this.CAPACITY_DEFAULT);
     }
 
     @SuppressWarnings("unchecked")
-    public SequenceStack(int capacity) {
-        array = (T[]) new Object[capacity];
+    public SequenceStack(Class<T> type, int capacity) {
+//        array = (T[]) new Object[capacity];
+        array = (T[]) Array.newInstance(type, capacity);
     }
 
     @Override

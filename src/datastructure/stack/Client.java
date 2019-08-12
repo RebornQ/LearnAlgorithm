@@ -2,7 +2,7 @@ package datastructure.stack;
 
 public class Client {
     public static void main(String[] args) {
-        SequenceStack<Integer> sequenceStack = new SequenceStack<>();
+        SequenceStack<Integer> sequenceStack = new SequenceStack<>(Integer.class);
         System.out.println("Empty? " + sequenceStack.isEmpty());
         for (int i = 0; i < 10; i++) {
             sequenceStack.push(i);
