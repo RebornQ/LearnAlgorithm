@@ -1,6 +1,6 @@
-package datastructure.queue;
+package datastructure._3_queue;
 
-import datastructure.queue.exception.QueueException;
+import datastructure._3_queue.exception.QueueException;
 
 import java.util.Objects;
 import java.util.Scanner;

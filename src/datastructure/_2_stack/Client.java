@@ -1,6 +1,6 @@
-package datastructure.stack;
+package datastructure._2_stack;
 
-import datastructure.stack.exception.StackException;
+import datastructure._2_stack.exception.StackException;
 
 import java.util.Scanner;
 

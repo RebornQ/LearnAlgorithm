@@ -1,6 +1,6 @@
-package datastructure.queue;
+package datastructure._3_queue;
 
-import datastructure.queue.exception.EmptyQueueException;
+import datastructure._3_queue.exception.EmptyQueueException;
 
 public class LinkedQueue<T, R extends LinkedQueue.Node<T>> extends AbstractQueue<T, R> {
 

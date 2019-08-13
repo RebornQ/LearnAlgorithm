@@ -1,4 +1,4 @@
-package datastructure.queue;
+package datastructure._3_queue;
 
 public interface MyQueue<T> {
 

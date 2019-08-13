@@ -1,4 +1,4 @@
-package datastructure.queue.exception;
+package datastructure._3_queue.exception;
 
 public class QueueOverFlowError extends QueueException {
 

@@ -1,4 +1,4 @@
-package datastructure.stack.exception;
+package datastructure._2_stack.exception;
 
 public class EmptyStackException extends StackException {
 

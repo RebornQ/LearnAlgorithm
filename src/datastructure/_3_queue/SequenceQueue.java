@@ -1,8 +1,8 @@
-package datastructure.queue;
+package datastructure._3_queue;
 
-import datastructure.queue.exception.EmptyQueueException;
-import datastructure.queue.exception.QueueException;
-import datastructure.queue.exception.QueueOverFlowError;
+import datastructure._3_queue.exception.EmptyQueueException;
+import datastructure._3_queue.exception.QueueException;
+import datastructure._3_queue.exception.QueueOverFlowError;
 
 import java.lang.reflect.Array;
 

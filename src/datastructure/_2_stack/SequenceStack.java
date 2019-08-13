@@ -1,6 +1,6 @@
-package datastructure.stack;
+package datastructure._2_stack;
 
-import datastructure.stack.exception.EmptyStackException;
+import datastructure._2_stack.exception.EmptyStackException;
 
 import java.lang.reflect.Array;
 

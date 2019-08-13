@@ -1,4 +1,4 @@
-package datastructure.queue;
+package datastructure._3_queue;
 
 public abstract class AbstractQueue<T, R> implements MyQueue<T> {
 

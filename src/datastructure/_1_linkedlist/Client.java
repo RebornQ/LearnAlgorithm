@@ -1,4 +1,4 @@
-package datastructure.linkedlist;
+package datastructure._1_linkedlist;
 
 public class Client {
     public static void main(String[] args) {

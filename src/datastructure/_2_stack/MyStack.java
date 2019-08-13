@@ -1,6 +1,6 @@
-package datastructure.stack;
+package datastructure._2_stack;
 
-import datastructure.stack.exception.StackException;
+import datastructure._2_stack.exception.StackException;
 
 public interface MyStack<T> {
     // 1.https://blog.csdn.net/javazejian/article/details/53362993

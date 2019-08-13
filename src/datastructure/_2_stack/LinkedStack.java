@@ -1,7 +1,7 @@
-package datastructure.stack;
+package datastructure._2_stack;
 
-import datastructure.stack.exception.EmptyStackException;
-import datastructure.stack.exception.StackException;
+import datastructure._2_stack.exception.EmptyStackException;
+import datastructure._2_stack.exception.StackException;
 
 public class LinkedStack<T> implements MyStack<T> {
 
