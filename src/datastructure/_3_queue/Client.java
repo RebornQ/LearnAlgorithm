@@ -12,6 +12,7 @@ public class Client {
         System.out.println("请选择：");
         System.out.println("1.顺序循环队列");
         System.out.println("2.链式队列");
+        System.out.println("注意：队中的箭头方向指入队方向（也是出队方向）");
         Scanner scanner = new Scanner(System.in);
         int choose = scanner.nextInt();
         AbstractQueue queue = null;
@@ -35,7 +36,7 @@ public class Client {
             for (int i = 0; i < 3; i++) {
                 queue.enQueue(i);
             }
-            queue.output("再次入队后：");
+            queue.output("\n再次入队后：");
             while (!queue.isEmpty()) {
                 System.out.println("deQueue->" + queue.deQueue());
             }

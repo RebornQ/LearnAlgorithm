@@ -81,8 +81,11 @@ public class SequenceQueue<T, R extends Integer> extends AbstractQueue<T, R> {
         if (isEmpty()) {
             throw new EmptyQueueException();
         }
+        System.out.print("front ➡︎ | ");
         for (int i = front.intValue(); i != rear.intValue(); i = (i + 1) % array.length) {
-            System.out.println(array[i]);
+            if (i == rear.intValue()-1) System.out.print(array[i]);
+            else System.out.print(array[i]+" ← ");
         }
+        System.out.println(" | ⬅︎ rear");
     }
 }

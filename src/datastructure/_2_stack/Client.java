@@ -12,6 +12,7 @@ public class Client {
         System.out.println("请选择：");
         System.out.println("1.顺序栈");
         System.out.println("2.链栈");
+        System.out.println("注意：栈中的箭头方向仅指入栈方向");
         Scanner scanner = new Scanner(System.in);
         AbstractStack stack = null;
         int choose = scanner.nextInt();
@@ -24,21 +25,26 @@ public class Client {
                 break;
         }
         try {
-            System.out.println("Empty? " + Objects.requireNonNull(stack).isEmpty());
-            System.out.print("Inputting...");
             for (int i = 0; i < 11; i++) {
+                Objects.requireNonNull(stack).push(i);
+            }
+            stack.output();
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Pop->" + stack.pop());
+            }
+            stack.output();
+            System.out.println("\nPeek->" + stack.peek());
+            for (int i = 0; i < 3; i++) {
                 stack.push(i);
             }
-            System.out.println("Done");
-            System.out.println("Empty? " + stack.isEmpty());
-            System.out.println("\nPeek->" + stack.peek());
-            System.out.println("\nPopping...");
+            stack.output("\n再次入栈后：");
             while (!stack.isEmpty()) {
                 System.out.println("Pop->" + stack.pop());
             }
-            System.out.println("Done");
             System.out.println("\nEmpty? " + stack.isEmpty());
+            stack.output();
         } catch (StackException e) {
+            System.out.println(e.getLocalizedMessage());
             e.printStackTrace();
         }
     }

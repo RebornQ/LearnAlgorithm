@@ -63,4 +63,20 @@ public class LinkedStack<T, R extends LinkedStack.Node<T>> extends AbstractStack
         }
         return result;
     }
+
+    @Override
+    void output(String message) {
+        System.out.println(message);
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        Node<T> temp = top;
+        System.out.print("top ➡︎ | ");
+        while (temp != null && !temp.isEmpty()) {
+            if (temp.next.isEmpty()) System.out.print(temp.data);
+            else System.out.print(temp.data+" → ");
+            temp = temp.next;
+        }
+        System.out.println(" | ⬅︎ bottom");
+    }
 }

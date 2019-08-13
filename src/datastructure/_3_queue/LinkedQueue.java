@@ -60,9 +60,12 @@ public class LinkedQueue<T, R extends LinkedQueue.Node<T>> extends AbstractQueue
             throw new EmptyQueueException();
         }
         Node<T> temp = front;
+        System.out.print("front ➡︎ | ");
         while (temp != null) {
-            System.out.println(temp.data);
+            if (temp.next == null) System.out.print(temp.data);
+            else System.out.print(temp.data+" ← ");
             temp = temp.next;
         }
+        System.out.println(" | ⬅︎ rear");
     }
 }

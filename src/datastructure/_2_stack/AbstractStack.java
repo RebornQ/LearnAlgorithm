@@ -7,4 +7,18 @@ public abstract class AbstractStack<T, R> implements MyStack<T>{
      */
     protected R top;
 
+    /**
+     * 自定义输出
+     *
+     * @param message 输出的信息
+     */
+    abstract void output(String message);
+
+    /**
+     * 默认输出
+     */
+    public void output() {
+        output("输出当前栈：");
+    }
+
 }
