@@ -3,12 +3,12 @@ package datastructure._2_stack;
 import datastructure._2_stack.exception.EmptyStackException;
 import datastructure._2_stack.exception.StackException;
 
-public class LinkedStack<T> implements MyStack<T> {
+public class LinkedStack<T, R extends LinkedStack.Node<T>> extends AbstractStack<T, R> {
 
     // 定义一个节点类
-    private static class Node<U> {
-        private U data;
-        private Node<U> next;
+    protected static class Node<U> {
+        U data;
+        Node<U> next;
 
         public Node() {
             data = null;
@@ -26,10 +26,10 @@ public class LinkedStack<T> implements MyStack<T> {
     }
 
     // 栈顶指针
-    private Node<T> top;
+//    private Node<T> top;
 
     LinkedStack() {
-        top = new Node<>();
+        top = (R) new Node<>();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class LinkedStack<T> implements MyStack<T> {
     @Override
     public void push(T data) throws StackException {
         if (data == null) throw new StackException("坏人！想骗吃骗喝？");
-        top = new Node<>(data, top);    // 更新栈顶
+        top = (R) new Node<>(data, top);    // 更新栈顶
     }
 
     @Override
@@ -59,7 +59,7 @@ public class LinkedStack<T> implements MyStack<T> {
         }
         T result = top.data;
         if (!top.isEmpty()) {
-            top = top.next;
+            top = (R) top.next;
         }
         return result;
     }
