@@ -2,9 +2,9 @@ package datastructure.queue;
 
 import datastructure.queue.exception.EmptyQueueException;
 
-public class LinkedQueue<T> implements MyQueue<T> {
+public class LinkedQueue<T, R extends LinkedQueue.Node<T>> extends AbstractQueue<T, R> {
 
-    private static class Node<U> {
+    protected static class Node<U> {
         U data;
         Node<U> next;
 
@@ -14,16 +14,17 @@ public class LinkedQueue<T> implements MyQueue<T> {
         }
     }
 
-    private Node<T> front, rear;
+//    private Node<T> front, rear;
 
     public LinkedQueue() {
         // 初始化空队列
         front = rear = null;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void enQueue(T data) {
-        Node<T> node = new Node<>(data, null);
+        R node = (R) new Node<>(data, null);
         if (front == null) {    // 空队列插入元素
             front = node;
         } else {    // 非空队列，队尾插入元素
@@ -33,13 +34,14 @@ public class LinkedQueue<T> implements MyQueue<T> {
 //        rear = rear.next; // 不可用，因为空队列插入时队尾指针null，访问rear.next会报空指针异常
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public T deQueue() {
         if (isEmpty()) {
             throw new EmptyQueueException();
         }
         T node = front.data;
-        front = front.next;
+        front = (R) front.next;
         if (front == null) {
             rear = null;
         }
