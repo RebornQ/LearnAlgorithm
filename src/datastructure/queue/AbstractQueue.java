@@ -14,5 +14,7 @@ public abstract class AbstractQueue<T, R> implements MyQueue<T> {
     /**
      * 默认输出
      */
-    abstract void output();
+    public void output() {
+        output("输出当前队列：");
+    }
 }

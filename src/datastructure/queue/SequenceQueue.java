@@ -75,6 +75,7 @@ public class SequenceQueue<T, R extends Integer> extends AbstractQueue<T, R> {
     /**
      * 输出队列
      */
+    @Override
     public void output(String message) {
         System.out.println(message);
         if (isEmpty()) {
@@ -83,9 +84,5 @@ public class SequenceQueue<T, R extends Integer> extends AbstractQueue<T, R> {
         for (int i = front.intValue(); i != rear.intValue(); i = (i + 1) % array.length) {
             System.out.println(array[i]);
         }
-    }
-
-    public void output() {
-        output("输出当前队列：");
     }
 }

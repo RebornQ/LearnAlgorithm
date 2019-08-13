@@ -65,9 +65,4 @@ public class LinkedQueue<T, R extends LinkedQueue.Node<T>> extends AbstractQueue
             temp = temp.next;
         }
     }
-
-    @Override
-    public void output() {
-        output("输出当前队列：");
-    }
 }
