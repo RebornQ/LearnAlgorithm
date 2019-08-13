@@ -2,26 +2,42 @@ package datastructure.queue;
 
 import datastructure.queue.exception.QueueException;
 
+import java.util.Objects;
+import java.util.Scanner;
+
 public class Client {
     public static void main(String[] args) {
-        SequenceQueue<Integer> sequenceQueue = new SequenceQueue<>(Integer.class);
+        System.out.println("请选择：");
+        System.out.println("1.顺序循环队列");
+        System.out.println("2.链式队列");
+        Scanner scanner = new Scanner(System.in);
+        int choose = scanner.nextInt();
+        MyQueue<Integer> queue = null;
+        switch (choose) {
+            case 1:
+                queue = new SequenceQueue<>(Integer.class);
+                break;
+            case 2:
+                queue = new LinkedQueue<>();
+                break;
+        }
         try {
             for (int i = 0; i < 9; i++) {
-                sequenceQueue.enQueue(i);
+                Objects.requireNonNull(queue).enQueue(i);
             }
-            sequenceQueue.output();
-            System.out.println("deQueue->" + sequenceQueue.deQueue());
-            System.out.println("deQueue->" + sequenceQueue.deQueue());
-            System.out.println("deQueue->" + sequenceQueue.deQueue());
-            sequenceQueue.output();
+            queue.output();
             for (int i = 0; i < 3; i++) {
-                sequenceQueue.enQueue(i);
+                System.out.println("deQueue->" + queue.deQueue());
             }
-            sequenceQueue.output("再次入队后：");
-            while (!sequenceQueue.isEmpty()) {
-                System.out.println("deQueue->" + sequenceQueue.deQueue());
+            queue.output();
+            for (int i = 0; i < 3; i++) {
+                queue.enQueue(i);
             }
-            sequenceQueue.output();
+            queue.output("再次入队后：");
+            while (!queue.isEmpty()) {
+                System.out.println("deQueue->" + queue.deQueue());
+            }
+            queue.output();
         } catch (QueueException e) {
             System.out.println(e.getLocalizedMessage());
             e.printStackTrace();
