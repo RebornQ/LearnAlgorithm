@@ -6,19 +6,21 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Client {
+
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         System.out.println("请选择：");
         System.out.println("1.顺序循环队列");
         System.out.println("2.链式队列");
         Scanner scanner = new Scanner(System.in);
         int choose = scanner.nextInt();
-        MyQueue<Integer> queue = null;
+        AbstractQueue queue = null;
         switch (choose) {
             case 1:
                 queue = new SequenceQueue<>(Integer.class);
                 break;
             case 2:
-                queue = new LinkedQueue<>();
+                queue = new LinkedQueue<Integer, LinkedQueue.Node<Integer>>();
                 break;
         }
         try {

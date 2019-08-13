@@ -22,16 +22,4 @@ public interface MyQueue<T> {
      * 队列是否为空
      */
     boolean isEmpty();
-
-    /**
-     * 自定义输出
-     *
-     * @param message 输出的信息
-     */
-    void output(String message);
-
-    /**
-     * 默认输出
-     */
-    void output();
 }

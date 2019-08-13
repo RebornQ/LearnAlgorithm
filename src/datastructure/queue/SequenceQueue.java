@@ -16,7 +16,7 @@ import java.lang.reflect.Array;
     注意此时队列中仍有一个空的位置，队尾指针也永远要空出1位，所以队列最大容量比数组长度小1，
     主要用于避免与队列空的条件 front=rear 相同。
  */
-public class SequenceQueue<T> implements MyQueue<T> {
+public class SequenceQueue<T, R extends Integer> extends AbstractQueue<T, R> {
 
     private Class<T> type;
 
@@ -27,33 +27,35 @@ public class SequenceQueue<T> implements MyQueue<T> {
      */
     private final int CAPACITY_DEFAULT = 10;
 
-    private int front, rear;
+//    private U front, rear;
 
     @SuppressWarnings("unchecked")
     public SequenceQueue(Class<T> type) {
         this.type = type;
         array = (T[]) Array.newInstance(type, CAPACITY_DEFAULT);
-        front = rear = 0;
+        front = rear = (R) new Integer(0);
     }
 
     @SuppressWarnings("unchecked")
     public SequenceQueue(Class<T> type, int capacity) {
         this.type = type;
         array = (T[]) Array.newInstance(type, capacity);
-        front = rear = 0;
+        front = rear = (R) new Integer(0);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void enQueue(T data) throws QueueException {
         // 约定 front=(rear+1)%size 时队列为满
-        if ((rear + 1) % array.length == front) {
+        if ((rear.intValue() + 1) % array.length == front.intValue()) {
             throw new QueueOverFlowError();
         }
-        array[rear] = data;
+        array[rear.intValue()] = data;
         // 入队操作改变rear下标指向
-        rear = (rear + 1) % array.length;
+        rear = (R) new Integer((rear.intValue() + 1) % array.length);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public T deQueue() throws QueueException {
         if (isEmpty()) {
@@ -61,13 +63,13 @@ public class SequenceQueue<T> implements MyQueue<T> {
         }
         T deQueueElement = array[front];
         // 出队操作改变front下标指向
-        front = (front + 1) % array.length;
+        front = (R) new Integer((front.intValue() + 1) % array.length);
         return deQueueElement;
     }
 
     @Override
     public boolean isEmpty() {
-        return front == rear;
+        return front.equals(rear);
     }
 
     /**
@@ -78,7 +80,7 @@ public class SequenceQueue<T> implements MyQueue<T> {
         if (isEmpty()) {
             throw new EmptyQueueException();
         }
-        for (int i = front; i != rear; i = (i + 1) % array.length) {
+        for (int i = front.intValue(); i != rear.intValue(); i = (i + 1) % array.length) {
             System.out.println(array[i]);
         }
     }
