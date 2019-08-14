@@ -58,9 +58,7 @@ public class LinkedStack<T, R extends LinkedStack.Node<T>> extends AbstractStack
             throw new EmptyStackException();
         }
         T result = top.data;
-        if (!top.isEmpty()) {
-            top = (R) top.next;
-        }
+        top = (R) top.next;
         return result;
     }
 
