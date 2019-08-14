@@ -96,8 +96,8 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
             throw new EmptyStackException();
         }
         System.out.print("top ➡︎ | ");
-        for (int i = top; i > 0; i--) {
-            if (i == 1) System.out.print(array[i]);
+        for (int i = top; i >= 0; i--) {
+            if (i == 0) System.out.print(array[i]);
             else System.out.print(array[i] + " → ");
         }
         System.out.println(" | ⬅︎ bottom");
