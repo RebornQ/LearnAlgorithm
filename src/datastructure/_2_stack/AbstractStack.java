@@ -8,6 +8,16 @@ public abstract class AbstractStack<T, R> implements MyStack<T>{
     protected R top;
 
     /**
+     * 栈的初始容量为10
+     */
+    protected final int CAPACITY_DEFAULT = 10;
+
+    /**
+     * 栈的大小
+     */
+    protected int size = 0;
+
+    /**
      * 自定义输出
      *
      * @param message 输出的信息

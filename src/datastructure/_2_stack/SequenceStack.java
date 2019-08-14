@@ -12,16 +12,9 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
 //    private int top = -1;
 
     /**
-     * 栈的初始容量为10
-     */
-    private final int CAPACITY_DEFAULT = 10;
-
-    /**
      * 数组实现顺序栈
      */
     private T[] array;
-
-    private int size = 0;
 
     private Class<T> type;
 
