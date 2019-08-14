@@ -9,7 +9,7 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
     /**
      * 栈顶指针，-1代表空栈
      */
-//    private int top = -1;
+    private int top = -1;
 
     /**
      * 数组实现顺序栈
@@ -23,7 +23,6 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
 //        array = (T[]) new Object[this.CAPACITY_DEFAULT];
         this.type = type;
         array = (T[]) Array.newInstance(type, this.CAPACITY_DEFAULT);
-        top = (R) new Integer(-1);
     }
 
     @SuppressWarnings("unchecked")
@@ -31,24 +30,22 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
 //        array = (T[]) new Object[capacity];
         this.type = type;
         array = (T[]) Array.newInstance(type, capacity);
-        top = (R) new Integer(-1);
     }
 
     @Override
     public boolean isEmpty() {
-        return top.equals(-1);
+        return top == -1;
     }
 
     @Override
     public void push(T data) {
         // 判断是否达到容量限制
-        if (top.equals(array.length - 1))   // 超出栈容量
+        if (top == array.length - 1)   // 超出栈容量
 //            throw new StackOverflowError("爆水管啦！");
             // 扩容
             ensureCapacity(array.length * 2 + 1);
-        // 从栈顶添加元素
-        top = (R) new Integer(top.intValue() + 1);
-        array[top.intValue()] = data;
+        // 更新栈顶指针，并从栈顶添加元素
+        array[++top] = data;
         size++;
     }
 
@@ -66,9 +63,7 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
             throw new EmptyStackException();
         }
         size--;
-        T temp = array[top.intValue()];
-        top = (R) new Integer(top.intValue() - 1);
-        return temp;
+        return array[top--];
     }
 
     @SuppressWarnings("unchecked")

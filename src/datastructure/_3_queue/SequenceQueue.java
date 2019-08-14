@@ -27,32 +27,32 @@ public class SequenceQueue<T, R extends Integer> extends AbstractQueue<T, R> {
      */
     private final int CAPACITY_DEFAULT = 10;
 
-//    private U front, rear;
+    private int front, rear;
 
     @SuppressWarnings("unchecked")
     public SequenceQueue(Class<T> type) {
         this.type = type;
         array = (T[]) Array.newInstance(type, CAPACITY_DEFAULT);
-        front = rear = (R) new Integer(0);
+        front = rear = 0;
     }
 
     @SuppressWarnings("unchecked")
     public SequenceQueue(Class<T> type, int capacity) {
         this.type = type;
         array = (T[]) Array.newInstance(type, capacity);
-        front = rear = (R) new Integer(0);
+        front = rear = 0;
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public void enQueue(T data) throws QueueException {
         // 约定 front=(rear+1)%size 时队列为满
-        if ((rear.intValue() + 1) % array.length == front.intValue()) {
+        if ((rear + 1) % array.length == front) {
             throw new QueueOverFlowError();
         }
-        array[rear.intValue()] = data;
+        array[rear] = data;
         // 入队操作改变rear下标指向
-        rear = (R) new Integer((rear.intValue() + 1) % array.length);
+        rear = (rear + 1) % array.length;
     }
 
     @SuppressWarnings("unchecked")
@@ -63,13 +63,13 @@ public class SequenceQueue<T, R extends Integer> extends AbstractQueue<T, R> {
         }
         T deQueueElement = array[front];
         // 出队操作改变front下标指向
-        front = (R) new Integer((front.intValue() + 1) % array.length);
+        front = (front + 1) % array.length;
         return deQueueElement;
     }
 
     @Override
     public boolean isEmpty() {
-        return front.equals(rear);
+        return front == rear;
     }
 
     /**
@@ -82,9 +82,9 @@ public class SequenceQueue<T, R extends Integer> extends AbstractQueue<T, R> {
             throw new EmptyQueueException();
         }
         System.out.print("front ➡︎ | ");
-        for (int i = front.intValue(); i != rear.intValue(); i = (i + 1) % array.length) {
-            if (i == rear.intValue()-1) System.out.print(array[i]);
-            else System.out.print(array[i]+" ← ");
+        for (int i = front; i != rear; i = (i + 1) % array.length) {
+            if (i == rear - 1) System.out.print(array[i]);
+            else System.out.print(array[i] + " ← ");
         }
         System.out.println(" | ⬅︎ rear");
     }
