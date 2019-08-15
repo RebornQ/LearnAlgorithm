@@ -14,7 +14,7 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
     /**
      * 数组实现顺序栈
      */
-    private T[] array;
+    private T[] stack;
 
     private Class<T> type;
 
@@ -22,14 +22,14 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
     public SequenceStack(Class<T> type) {
 //        array = (T[]) new Object[this.CAPACITY_DEFAULT];
         this.type = type;
-        array = (T[]) Array.newInstance(type, this.CAPACITY_DEFAULT);
+        stack = (T[]) Array.newInstance(type, this.CAPACITY_DEFAULT);
     }
 
     @SuppressWarnings("unchecked")
     public SequenceStack(Class<T> type, int capacity) {
 //        array = (T[]) new Object[capacity];
         this.type = type;
-        array = (T[]) Array.newInstance(type, capacity);
+        stack = (T[]) Array.newInstance(type, capacity);
     }
 
     @Override
@@ -40,12 +40,12 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
     @Override
     public void push(T data) {
         // 判断是否达到容量限制
-        if (top == array.length - 1)   // 超出栈容量
+        if (top == stack.length - 1)   // 超出栈容量
 //            throw new StackOverflowError("爆水管啦！");
             // 扩容
-            ensureCapacity(array.length * 2 + 1);
+            ensureCapacity(stack.length * 2 + 1);
         // 更新栈顶指针，并从栈顶添加元素
-        array[++top] = data;
+        stack[++top] = data;
         size++;
     }
 
@@ -54,7 +54,7 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return array[top];
+        return stack[top];
     }
 
     @Override
@@ -63,7 +63,7 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
             throw new EmptyStackException();
         }
         size--;
-        return array[top--];
+        return stack[top--];
     }
 
     @SuppressWarnings("unchecked")
@@ -71,11 +71,11 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
         // 如果需要扩展的容量比现在数组容量还小，则无需扩容
         if (capacity < size) return;
 
-        T[] oldArray = array;
-        array = (T[]) Array.newInstance(type, capacity);
+        T[] oldArray = stack;
+        stack = (T[]) Array.newInstance(type, capacity);
         // 复制元素到扩容后的新数组
         for (int i = 0; i < size; i++) {
-            array[i] = oldArray[i];
+            stack[i] = oldArray[i];
         }
         oldArray = null;
     }
@@ -97,8 +97,8 @@ public class SequenceStack<T, R extends Integer> extends AbstractStack<T, R> {
         }
         System.out.print("top ➡︎ | ");
         for (int i = top; i >= 0; i--) {
-            if (i == 0) System.out.print(array[i]);
-            else System.out.print(array[i] + " → ");
+            if (i == 0) System.out.print(stack[i]);
+            else System.out.print(stack[i] + " → ");
         }
         System.out.println(" | ⬅︎ bottom");
     }
