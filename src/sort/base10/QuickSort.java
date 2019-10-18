@@ -14,10 +14,11 @@ public class QuickSort extends AbstractArraySort {
     public int[] sort(int[] sourceArray) {
         // 对 arr 进行拷贝，不改变参数内容
         array = Arrays.copyOf(sourceArray, sourceArray.length);
-        durationStart = System.nanoTime();
+        durationNanoStart = System.nanoTime();
+        durationStart = System.currentTimeMillis();
         int[] sortedArray = quickSort(array, 0, sourceArray.length - 1);
-        durationEnd = System.nanoTime();
-        duration = durationEnd - durationStart;
+        durationNano = System.nanoTime() - durationNanoStart;
+        duration = System.currentTimeMillis() - durationStart;
         return sortedArray;
     }
 
