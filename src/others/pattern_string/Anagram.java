@@ -29,12 +29,11 @@ public class Anagram {
         // 1. 先存好字符出现次数
         for (int i = 0; i < s1.length(); i++) {
             char c1 = s1.charAt(i);
-            if (map1.get(c1) == null) map1.put(c1, 1);
-            else map1.put(c1, (map1.get(c1) + 1));
+            // 若为 c1 在 map1 中不存在，则默认值为1；否则+1
+            map1.merge(c1, 1, Integer::sum);
 
             char c2 = s2.charAt(i);
-            if (map2.get(c2) == null) map2.put(c2, 1);
-            else map2.put(c2, (map2.get(c2) + 1));
+            map2.merge(c2, 1, Integer::sum);
         }
         // 2. 检查字符及其出现次数是否一致
         Iterator<Character> map2Iter = map2.keySet().iterator();
