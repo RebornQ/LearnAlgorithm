@@ -1,6 +1,7 @@
 package base.sort.base10;
 
 import base.sort.AbstractArraySort;
+import util.aspects.annotations.RuntimeLogAnnotation;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -14,19 +15,19 @@ public class QuickSort extends AbstractArraySort {
     public int[] sort(int[] sourceArray) {
         // 对 arr 进行拷贝，不改变参数内容
         array = Arrays.copyOf(sourceArray, sourceArray.length);
-        durationNanoStart = System.nanoTime();
-        durationStart = System.currentTimeMillis();
-        int[] sortedArray = quickSort(array, 0, sourceArray.length - 1);
-        durationNano = System.nanoTime() - durationNanoStart;
-        duration = System.currentTimeMillis() - durationStart;
-        return sortedArray;
+        return quickSort(array);
     }
 
-    public int[] quickSort(int[] arr, int left, int right) {
+    @RuntimeLogAnnotation
+    private int[] quickSort(int[] arr) {
+        return quickSort(arr, 0, arr.length - 1);
+    }
+
+    private int[] quickSort(int[] arr, int left, int right) {
         // 递归结束条件 left >= right
         if (left < right) {
             // 得到基准元素位置
-            int pivotIndex = partition(arr, left, right);
+            int pivotIndex = partitionV2(arr, left, right);
             // 根据基准元素，分成两部分进行递归排序
             quickSort(arr, left, pivotIndex - 1);
             quickSort(arr, pivotIndex + 1, right);
@@ -68,7 +69,26 @@ public class QuickSort extends AbstractArraySort {
      * @param right 结束下标
      * @return 排序后的数组
      */
-    public int partitionV2(int[] arr, int left, int right) {
-        return left;
+    private int partitionV2(int[] arr, int left, int right) {
+        // 设定基准值
+        int pivot = (new Random()).nextInt(right) % (right - left + 1) + left;
+        // 把基准值元素交换到序列头部，完成分治后再换回去
+        swap(arr, left, pivot);
+        pivot = left;
+        int start = pivot + 1;  // 因为基准值元素是有序的，所以不需要比较
+        int end = right;
+        while (true) {
+            // 从左往右扫描，找到第一个大于等于 基准值(pivot) 的元素位置
+            while (start <= end && arr[start] <= arr[pivot]) start++;
+            // 从右往左扫描，找到第一个小于等于 基准值(pivot) 的元素位置
+            while (start <= end && arr[end] >= arr[pivot]) end--;
+            // 左右指针相遇
+            if (start >= end) break;
+            // 交换左右数据，使得左边的元素不大于pivot，右边的不小于pivot
+            swap(arr, start, end);
+        }
+        // 将基准值元素插入序列
+        swap(arr, pivot, end);
+        return end;
     }
 }

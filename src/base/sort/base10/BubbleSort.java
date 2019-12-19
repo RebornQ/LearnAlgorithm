@@ -19,8 +19,7 @@ public class BubbleSort extends AbstractArraySort {
     public int[] sort(int[] sourceArray) {
         // 对 arr 进行拷贝，不改变参数内容
         array = Arrays.copyOf(sourceArray, sourceArray.length);
-        int[] sortedArray = bubbleSort(array);
-        return sortedArray;
+        return bubbleSort(array);
     }
 
     /**
@@ -36,7 +35,7 @@ public class BubbleSort extends AbstractArraySort {
      * 时间复杂度：O(n^2)
      */
     @RuntimeLogAnnotation
-    public int[] bubbleSort(int[] arr) {
+    private int[] bubbleSort(int[] arr) {
         // 外n-1 内n-i-1
         // 在第n-1轮的时候，只剩下一个元素没有位于有序区，但此时所有元素已经有序，所以总共遍历n-1轮
         for (int i = 0; i < arr.length - 1; i++) {

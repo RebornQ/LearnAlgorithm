@@ -11,16 +11,11 @@ public class Client {
 
         arraySort = new QuickSort();
         arraySort.sort(arr);
-        arraySort.print();
 
-        arr = new int[]{1, 4, 3, 5, 2, 6, 0};
         arraySort = new BubbleSort();
         arraySort.sort(arr);
-//        arraySort.print();
 
-        arr = new int[]{1, 4, 3, 5, 2, 6, 0};
         arraySort = new SelectSort();
         arraySort.sort(arr);
-//        arraySort.print();
     }
 }

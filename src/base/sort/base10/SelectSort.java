@@ -16,8 +16,7 @@ public class SelectSort extends AbstractArraySort {
     public int[] sort(int[] sourceArray) {
         // 对 arr 进行拷贝，不改变参数内容
         array = Arrays.copyOf(sourceArray, sourceArray.length);
-        int[] sortedArray = selectSort(array);
-        return sortedArray;
+        return selectSort(array);
     }
 
     /**
@@ -27,7 +26,7 @@ public class SelectSort extends AbstractArraySort {
      * 时间复杂度：O(n^2)
      */
     @RuntimeLogAnnotation
-    public int[] selectSort(int[] arr) {
+    private int[] selectSort(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int min = i;
             // 由于无序区的第一个元素一定会被比较，所以直接i+1开始即可
