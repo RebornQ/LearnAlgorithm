@@ -1,6 +1,7 @@
 package base.sort;
 
 import base.sort.base10.BubbleSort;
+import base.sort.base10.InsertSort;
 import base.sort.base10.QuickSort;
 import base.sort.base10.SelectSort;
 
@@ -16,6 +17,9 @@ public class Client {
         arraySort.sort(arr);
 
         arraySort = new SelectSort();
+        arraySort.sort(arr);
+
+        arraySort = new InsertSort();
         arraySort.sort(arr);
     }
 }
