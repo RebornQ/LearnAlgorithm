@@ -8,12 +8,12 @@ import java.util.LinkedList;
 
 /**
  * Created by reborn on 2019-10-21 21:17
- *
+ * <p>
  * 二叉树的镜像
- *
+ * <p>
  * 题目描述：
  * 操作给定的二叉树，将其变换为源二叉树的镜像。
- *
+ * <p>
  * 输入描述:
  * 二叉树的镜像定义：
  *
@@ -30,6 +30,10 @@ import java.util.LinkedList;
  *     	  10   6
  *     	 / \  / \
  *     	11 9 7  5
+ * <p>
+ * 时间限制：C/C++ 1秒，其他语言2秒 空间限制：C/C++ 32M(32768K)，其他语言64M
+ * <p>
+ * 本题知识点：树
  */
 public class Offer018 {
 

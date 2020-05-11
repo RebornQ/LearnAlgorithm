@@ -17,7 +17,7 @@ import static org.apache.logging.log4j.util.Strings.LINE_SEPARATOR;
  * <p>
  * 例如，当字符串为We Are Happy. 则经过替换之后的字符串为We%20Are%20Happy。
  * <p>
- * 时间限制：1秒 空间限制：32768K
+ * 时间限制：C/C++ 1秒，其他语言2秒 空间限制：C/C++ 32M(32768K)，其他语言64M
  * <p>
  * 本题知识点：字符串
  */

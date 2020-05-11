@@ -18,7 +18,7 @@ import static org.apache.logging.log4j.util.Strings.LINE_SEPARATOR;
  * 题目描述：
  * 输入一个链表，按链表从尾到头的顺序返回一个ArrayList。
  * <p>
- * 时间限制：1秒 空间限制：32768K
+ * 时间限制：C/C++ 1秒，其他语言2秒 空间限制：C/C++ 32M(32768K)，其他语言64M
  * <p>
  * 本题知识点： 链表
  */
