@@ -37,16 +37,6 @@ import java.util.LinkedList;
  */
 public class Offer018 {
 
-    public static class TreeNode {
-        int val = 0;
-        TreeNode left = null;
-        TreeNode right = null;
-
-        public TreeNode(int val) {
-            this.val = val;
-        }
-    }
-
     /*
      * 思路：
      * 尾递归遍历每一个结点，并使每一个结点的左右结点交换
